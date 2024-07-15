@@ -2,7 +2,7 @@
 // import단계
 const fetch = require("node-fetch");
 
-// 기본 url
+// 기본 url     *주의: /로 끝나게 설정했는지 안했는지 파악해서 /3// 이런식이 안되도록 해줘야함 
 const baseUrl = "http://api.themoviedb.org/3/";
 
 
@@ -56,8 +56,25 @@ const url = (urlName) => {
 
 // 요청하고난 뒤에 처리?
 export const nowPlaying = () => 
-fetch(url("movie/now_playing"), options).then(res => res.json());
+    fetch(url("movie/now_playing"), options).then(res => res.json());
 //whY? 우리식으로 json형태로 만들어줘야함 
 
 
 // 이후 Home components로 넘어가서 요청 함 
+
+
+// 요청건수가 다 다를 수 있기 때문에 함수를 만든 것임
+
+
+// 24.07.15 3강 1교시  ( 메소드명은 popular (0) , Popular(x))
+export const popular = () => 
+    fetch(url("movie/popular"), options).then(res => res.json());
+// 이휴 home.js로 가서 설정
+
+// 다시 와서 나머지 2개도 반복학습진행
+
+export const topRated = () =>
+    fetch(url("movie/top_rated"), options).then(res => res.json());
+
+export const upcoming = () =>
+    fetch(url("movie/upcoming"), options).then(res => res.json());

@@ -1,15 +1,25 @@
 import { useEffect, useState } from "react";
-import { nowPlaying } from "../../api";
+import { nowPlaying, popular, topRated, upcoming } from "../../api";
 
 export const Home = () => {
 
     const [nowData, setNowData] = useState();
-
+    const [popData, setPopData] = useState();
+    const [ratedData, setRatedData ] = useState();
+    const [upcomingData, setUpcomingData ] = useState();
     useEffect( () => {
-        (async() => {
+        (async () => {
             try {
-                const { results } = await nowPlaying();
-                setNowData(results);
+                const { results: nowResult } = await nowPlaying();
+                // => 비구조 할당시 이름이 중복될 땐 상위와 같이 이름을 변경할 수 있음
+                const { results: popResult} = await popular();
+                const { results: ratedResult } = await topRated();
+                const { results: upcomeResult} = await upcoming();
+                // console.log(upcom);
+                setNowData(nowResult);
+                setPopData(popResult);
+                setRatedData(ratedResult);
+                setUpcomingData(upcomeResult);
             }catch(error) {
                 console.log(error + "라는 오류가 발생했습니다");
             }
@@ -17,7 +27,9 @@ export const Home = () => {
     }, []);
     
     console.log(nowData);
-
+    console.log(popData);
+    console.log(ratedData);
+    console.log(upcomingData);
     return <div>Home</div>;
 };
 
