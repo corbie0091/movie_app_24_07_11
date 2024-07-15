@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { nowPlaying, popular, topRated, upcoming } from "../../api";
+import { Loading } from "../../components/Loading";
 
 export const Home = () => {
 
@@ -7,6 +8,8 @@ export const Home = () => {
     const [popData, setPopData] = useState();
     const [ratedData, setRatedData ] = useState();
     const [upcomingData, setUpcomingData ] = useState();
+    const [isLoading, setIsLoading] = useState(true); // 로딩은 기본적으로 true를 저장해놓고 있어야해서 
+
     useEffect( () => {
         (async () => {
             try {
@@ -20,6 +23,8 @@ export const Home = () => {
                 setPopData(popResult);
                 setRatedData(ratedResult);
                 setUpcomingData(upcomeResult);
+                // 모든게 다 읽혀지고 나면 로딩이 끝나도록 해줌 
+                setIsLoading(false);
             }catch(error) {
                 console.log(error + "라는 오류가 발생했습니다");
             }
@@ -27,10 +32,14 @@ export const Home = () => {
     }, []);
     
     console.log(nowData);
-    console.log(popData);
-    console.log(ratedData);
-    console.log(upcomingData);
-    return <div>Home</div>;
+    // console.log(popData);
+    // console.log(ratedData);
+    // console.log(upcomingData);
+    console.log(isLoading);
+
+    return <>
+      {isLoading ? <Loading /> : "HOME"}
+    </>;
 };
 
 // const data = nowPlaying();

@@ -3,9 +3,9 @@
 > Todo List
 - [x] Router 설정
 - [x] 각 컴포넌트, 폴더 등 설정
-- [ ] Api 설정
+- [x] Api 설정
+- [x] Loading 컴포넌트 구성
 - [ ] Header, Footer 등 공통적인 컴포넌트 구성
-- [ ] Loading 컴포넌트 구성
 - [ ] Web Font 설정g
 - [ ] 각 페이지 UI 구성과 반응형
 - [ ] Helmet 설정  
