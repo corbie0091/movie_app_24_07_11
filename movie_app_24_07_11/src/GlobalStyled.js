@@ -7,6 +7,7 @@ export const colors = {
 
 export const spacing = {
     side: "100px",
+    moSide: "20px",
 };
 
 export const Globalstyled = createGlobalStyle`
@@ -19,8 +20,8 @@ export const Globalstyled = createGlobalStyle`
         background-color: #1d1d1d;
         color: white;
         letter-spacing: -1px; //자간
+        word-break: keep-all; // 띄어쓰기를 기준으로 문장을 끊어줌 
     }
-
     a{
         text-decoration: none;
         color: crimson;
