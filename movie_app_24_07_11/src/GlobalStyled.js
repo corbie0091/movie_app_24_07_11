@@ -5,6 +5,10 @@ export const colors = {
     poiknt: "crimson",
 };
 
+export const spacing = {
+    side: "100px",
+};
+
 export const Globalstyled = createGlobalStyle`
     ${reset}
 
@@ -13,6 +17,7 @@ export const Globalstyled = createGlobalStyle`
     body{
         font-family: "Noto Sans KR", sans-serif;
         background-color: #1d1d1d;
+        color: white;
         letter-spacing: -1px; //자간
     }
 

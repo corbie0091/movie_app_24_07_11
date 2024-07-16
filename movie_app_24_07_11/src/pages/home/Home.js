@@ -1,6 +1,51 @@
 import { useEffect, useState } from "react";
 import { nowPlaying, popular, topRated, upcoming } from "../../api";
 import { Loading } from "../../components/Loading";
+import styled from "styled-components";
+import { spacing } from "../../GlobalStyled";
+import { ORIGIN_URL } from "../../constant/imgUrl";
+
+const MainBanner = styled.section`
+    height: 80vh;
+    background: url(${ORIGIN_URL}${(props) => props.$bgUrl}) 
+        no-repeat center / cover;
+    padding: 420px ${spacing.side} 0 ${spacing.side};
+    position: relative;
+    h3 {
+        font-size: 80px;
+        font-weight: 700;
+        letter-spacing: -3px;
+        margin-bottom: 30px;
+    }
+
+    p {
+        width: 500px;
+        line-height: 30px; 
+        font-size: 20px; //기본 사이즈는 16px이지만 메인 본문이므로 20px로 해야할 듯
+        opacity: 0.7;    // 타이틀 강조를 위해 본문 투명하게 
+        font-weight: 300;// 타이틀 강조를 위해 "" 
+
+        
+    }
+
+    &:hover {
+        p {
+        opacity: 1;
+        font-weight: 600;
+        }
+    }
+    
+`;
+
+const BlackBg = styled.div`
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(0deg, rgba(0,0,0,0.7830854668674698) 0%, rgba(255,255,255,0) 100%);
+    opacity: 1;
+`;
 
 export const Home = () => {
 
@@ -37,9 +82,19 @@ export const Home = () => {
     // console.log(upcomingData);
     console.log(isLoading);
 
-    return <>
-      {isLoading ? <Loading /> : "HOME"}
-    </>;
+    return ( <>
+      {isLoading ? ( <Loading /> 
+    ) : ( 
+                <>
+                    <MainBanner $bgUrl={nowData[0].backdrop_path}>
+                        <BlackBg />
+                        <h3>{nowData[0].title}</h3>
+                        <p>{nowData[0].overview.slice(0, 100) + "..."}</p>
+                    </MainBanner>
+                </> 
+            )}
+        </>
+    );
 };
 
 // const data = nowPlaying();
