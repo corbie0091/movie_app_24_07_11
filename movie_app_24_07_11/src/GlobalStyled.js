@@ -22,8 +22,15 @@ export const Globalstyled = createGlobalStyle`
         letter-spacing: -1px; //자간
         word-break: keep-all; // 띄어쓰기를 기준으로 문장을 끊어줌 
     }
+
+    img{
+        width: 100%;
+        display: block; // 인라인 요소 제거 
+    }
+
     a{
         text-decoration: none;
         color: crimson;
     }
+
 `;

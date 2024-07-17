@@ -1,9 +1,15 @@
+// import를 알파벳순으로 정리할 필요성이 있다 
 import { useEffect, useState } from "react";
 import { nowPlaying, popular, topRated, upcoming } from "../../api";
 import { Loading } from "../../components/Loading";
 import styled from "styled-components";
 import { spacing } from "../../GlobalStyled";
-import { ORIGIN_URL } from "../../constant/imgUrl";
+import { ORIGIN_URL, W500_URL } from "../../constant/imgUrl"; // 24.07.16
+import { Link } from "react-router-dom"; // 24.07.17
+import 'swiper/css'; // 24.07.17
+import { Swiper, SwiperSlide } from 'swiper/react'; // 24.07.17 swiper/react주의
+import { Scrollbar } from 'swiper/modules';
+import { Movies } from "./components/Movies";
 
 const MainBanner = styled.section`
     height: 80vh;
@@ -60,6 +66,7 @@ const BlackBg = styled.div`
     opacity: 1;
 `;
 
+
 export const Home = () => {
 
     const [nowData, setNowData] = useState();
@@ -104,6 +111,11 @@ export const Home = () => {
                         <h3>{nowData[0].title}</h3>
                         <p>{nowData[0].overview.slice(0, 100) + "..."}</p>
                     </MainBanner>
+
+                    <Movies title="현재 상영 영화" movieData={nowData}/>
+                    <Movies title="인기 영화" movieData={popData}/>
+                    <Movies title="평점 좋음" movieData={ratedData}/>
+                    <Movies title="개봉예정" movieData={upcomingData}/>
                 </> 
             )}
         </>
