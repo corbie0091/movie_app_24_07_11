@@ -2,12 +2,12 @@ import { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
 
 export const colors = {
-    poiknt: "crimson",
+  point: "crimson",
 };
 
 export const spacing = {
-    side: "100px",
-    moSide: "20px",
+  side: "100px",
+  moSide: "20px",
 };
 
 export const Globalstyled = createGlobalStyle`
@@ -30,7 +30,7 @@ export const Globalstyled = createGlobalStyle`
 
     a{
         text-decoration: none;
-        color: crimson;
+        color: white;
     }
 
 `;
