@@ -6,20 +6,22 @@ import { PageNotFound } from "./pages/PageNotFound";
 import { routes } from "./routes";
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
+import { ScrollToTop } from "./components/ScrollToTop";
 
 const Router = () => {
-    return (
+  return (
     <HashRouter>
-        <Header/>
-        <Routes>
-            <Route path={routes.home} element={<Home/>} />
-            <Route path={routes.detail} element={<Detail/>} />
-            <Route path={routes.search} element={<Search/>} />
-            <Route path="/*" element={<PageNotFound/>} />
-        </Routes>
-        <Footer/>
+      <ScrollToTop />
+      <Header />
+      <Routes>
+        <Route path={routes.home} element={<Home />} />
+        <Route path={routes.detail} element={<Detail />} />
+        <Route path={routes.search} element={<Search />} />
+        <Route path="/*" element={<PageNotFound />} />
+      </Routes>
+      <Footer />
     </HashRouter>
-    );
+  );
 };
 
 export default Router;
