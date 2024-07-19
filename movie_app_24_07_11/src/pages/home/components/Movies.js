@@ -7,9 +7,18 @@ import "swiper/css/scrollbar"; // Swiper의 Scrollbar 스타일을 불러옵니�
 import { W500_URL } from "../../../constant/imgUrl";
 import { Link } from "react-router-dom";
 
+// Section 스타일
+const Section = styled.section`
+  padding: 100px 0 0 ${spacing.side};
+  @media screen and (max-width: 768px) {
+    padding: 100px 0 0 ${spacing.moSide};
+  }
+`;
+
+// CustomScrollbar 스타일
 const CustomScrollbar = styled.div`
   .swiper {
-    padding-bottom: 20px; /* 스크롤바가 들어갈 공간을 확보합니다 */
+    padding-bottom: 15px; /* 스크롤바가 들어갈 공간을 확보합니다 */
   }
   .swiper-scrollbar {
     height: 5px; /* 스크롤바의 높이 */
@@ -24,21 +33,52 @@ const CustomScrollbar = styled.div`
   }
 `;
 
-const Section = styled.section`
-  padding: 100px ${spacing.side} 0 ${spacing.side};
-`;
-
+// Title 스타일
 const Title = styled.h3`
   font-size: 40px;
   font-weight: 700;
   margin-bottom: 30px;
 `;
 
-const MovieTitle = styled.h3`
-  font-size: 18px;
-  margin-top: 20px;
+// ImageWrapper와 MovieImage 스타일
+const ImageWrapper = styled.div`
+  width: 100%;
+  padding-bottom: 160%; /* 16:9 비율 (높이 / 너비 * 100) */
+  position: relative;
+  overflow: hidden;
+  border-radius: 2%; /* 모서리 둥글게 */
 `;
 
+const MovieImage = styled.img`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 이미지가 지정된 크기에 맞게 잘립니다 */
+`;
+
+// MovieContainer와 MovieTitle 스타일
+const MovieContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const MovieTitle = styled.h3`
+  font-size: 18px;
+  margin-top: 10px;
+  margin-bottom: 13px;
+  text-align: center; /* 텍스트 가운데 정렬 */
+  display: -webkit-box;
+  -webkit-line-clamp: 1; /* 최대 한 줄 표시 */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal; /* 줄 바꿈 허용 */
+`;
+
+// Swiper 파라미터 설정
 const params = {
   slidesPerView: 8.3,
   spaceBetween: 20,
@@ -56,6 +96,7 @@ const params = {
     },
   },
 };
+
 export const Movies = ({ movieData, title }) => {
   return (
     <Section>
@@ -69,8 +110,15 @@ export const Movies = ({ movieData, title }) => {
           {movieData.map((data) => (
             <SwiperSlide key={data.id}>
               <Link to={`/detail/${data.id}/`}>
-                <img src={`${W500_URL}${data.poster_path}`} alt={title} />
-                <MovieTitle>{data.title}</MovieTitle>
+                <MovieContainer>
+                  <ImageWrapper>
+                    <MovieImage
+                      src={`${W500_URL}${data.poster_path}`}
+                      alt={data.title}
+                    />
+                  </ImageWrapper>
+                  <MovieTitle>{data.title}</MovieTitle>
+                </MovieContainer>
               </Link>
             </SwiperSlide>
           ))}

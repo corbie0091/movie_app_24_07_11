@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { ORIGIN_URL } from "../../../constant/imgUrl";
 import { spacing } from "../../../GlobalStyled";
+import { Link } from "react-router-dom";
 
 const Container = styled.section`
   height: 80vh;
@@ -58,9 +59,11 @@ const BlackBg = styled.div`
 export const MainBanner = ({ data }) => {
   return (
     <Container $bgUrl={data.backdrop_path}>
-      <BlackBg />
-      <h3>{data.title}</h3>
-      <p>{data.overview.slice(0, 100) + "..."}</p>
+      <Link to={`/detail/${data.id}/`}>
+        <BlackBg />
+        <h3>{data.title}</h3>
+        <p>{data.overview.slice(0, 100) + "..."}</p>
+      </Link>
     </Container>
   );
 };
