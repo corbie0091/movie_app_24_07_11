@@ -2,87 +2,169 @@ import React, { useEffect, useState } from "react";
 import { movieDetail } from "../../api";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
-import { W500_URL } from "../../constant/imgUrl";
+import { ORIGIN_URL } from "../../constant/imgUrl";
+import { Loading } from "../../components/Loading";
 import { spacing } from "../../GlobalStyled";
 
 const Container = styled.div`
+  padding: 150px 20%;
   display: flex;
-  padding: 300px ${spacing.side};
-  margin: 0 auto;
-  width: 2000px;
-`;
-const Bg = styled.div`
-  margin-right: 20px;
-  img {
-    width: 55vh;
+
+  @media screen and (max-width: 768px) {
+    padding: 70px ${spacing.moSide} 0 ${spacing.moSide};
+    display: block;
   }
 `;
-const Text = styled.div`
-  padding-top: 100px;
-  justify-content: center;
-  p {
-    font-size: 40px;
-    padding: 20px 50px;
-    margin-bottom: 20px; /* 문단 사이의 여백 추가 */
+
+const CoverImg = styled.img`
+  width: 45%;
+  object-fit: cover; // 강제로 이런식으로 contain이나 cover로 맞추고 안되면 반응형으로 만들어줘야 할듯
+  margin-right: 5%;
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    margin-right: 0;
   }
 `;
-const Title = styled.h1`
-  text-align: center;
-  padding-bottom: 100px;
-  font-size: 100px;
-  margin-bottom: 50px; /* 제목과 다음 요소 사이의 여백 추가 */
+
+const ConWrap = styled.div`
+  width: 40%; // 55% + 40% = 95%  나머지 5%는 여백값으로 자동조정 됨
+
+  h3 {
+    font-size: 70px;
+    font-weight: 700;
+    margin-bottom: 30px;
+  }
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+
+    h3 {
+      font-size: 40px;
+      margin-bottom: 15px;
+    }
+  }
 `;
-const Runtime = styled.p``;
-const ReleaseDate = styled.p``;
-const Genre = styled.p``;
-const Overview = styled.p`
-  padding: 20px 0; /* 위아래 여백 추가 */
-  line-height: 1.4; /* 줄 간격 조정 */
+
+const Info = styled.div`
+  span {
+    display: block;
+    padding: 5px 10px;
+    background-color: #555;
+    border-radius: 20px;
+    font-size: 18px;
+    font-family: 400;
+    margin-right: 15px;
+
+    @media screen and (max-width: 768px) {
+      padding: 2px 4px;
+      display: block;
+      margin-right: 10px;
+      margin-bottom: 10px;
+    }
+  }
+
+  display: flex;
+`;
+
+const Genres = styled.ul`
+  list-style: disc; //크기가 없음
+  font-size: 18px;
+  margin-top: 20px;
+  margin-left: 20px;
+
+  li {
+    margin-top: 10px;
+  }
+
+  @media screen and (max-width: 768px) {
+    margin-left: 0;
+    padding-left: 20px;
+  }
+`;
+
+const Desc = styled.div`
+  font-size: 18px;
+  font-weight: 400;
+  opacity: 0.7;
+  margin-top: 100px;
+  line-height: 30px;
+
+  @media screen and (max-width: 768px) {
+    margin-top: 50px;
+  }
 `;
 
 // movieDetail을 불러오기를 할 것임 안에 변수를 만들어 받아올 것임
 export const Detail = () => {
   const [detailData, setDetailData] = useState(null);
-  const { id } = useParams();
-
+  const [isLoading, setIsLoading] = useState(true);
+  const { id: movieId } = useParams();
   useEffect(() => {
     (async () => {
       try {
-        console.log("Fetching details for movie ID:", id);
-        const DetailResult = await movieDetail(id);
-        // console.log(data); //data는 지역변수이므로 바깥에서 끄집어 내게끔 해줘야함
-        console.log(DetailResult);
+        console.log("Fetching details for movie ID:", movieId);
+        const DetailResult = await movieDetail(movieId);
         setDetailData(DetailResult);
+        setIsLoading(false);
       } catch (error) {
         console.log(error);
       }
     })();
-  }, [id]);
+  }, []);
   console.log(detailData);
-  if (!detailData) return <div>Loading...</div>;
+
   return (
-    <Container>
-      <Bg>
-        <img
-          src={`${W500_URL}${detailData.poster_path}`}
-          alt={detailData.title}
-        />
-      </Bg>
-      <Text>
-        <Title>
-          <h1>{detailData.title}</h1>
-        </Title>
-        <Runtime>런타임: {detailData.runtime}분</Runtime>
-        <ReleaseDate>개봉일: {detailData.release_date}</ReleaseDate>
-        <Genre>
-          장르:
-          {detailData.genres.map((genre) => (
-            <span key={genre.id}> {genre.name} </span>
-          ))}
-        </Genre>
-        <Overview>줄거리 : {detailData.overview}</Overview>
-      </Text>
-    </Container>
+    <div>
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <Container>
+          <CoverImg
+            src={ORIGIN_URL + detailData.poster_path}
+            alt={detailData.title}
+          />
+          <ConWrap>
+            <h3>{detailData.title}</h3>
+
+            <Info>
+              <span>{detailData.release_date}</span>
+              <span>{Math.round(detailData.vote_average * 10) / 10}점</span>
+              <span>{detailData.runtime}분</span>
+            </Info>
+
+            <Genres>
+              {detailData.genres.map((genre) => (
+                <li key={genre.id}>{genre.name}</li>
+              ))}
+            </Genres>
+            <Desc>{detailData.overview}</Desc>
+          </ConWrap>
+        </Container>
+      )}
+    </div>
+    // <Container>
+    //   <Bg>
+    //     <img
+    //       src={`${W500_URL}${detailData.poster_path}`}
+    //       alt={detailData.title}
+    //     />
+    //   </Bg>
+    //   <Text>
+    //     <Title>
+    //       <h1>{detailData.title}</h1>
+    //     </Title>
+    //     <Runtime>런타임: {detailData.runtime}분</Runtime>
+    //     <ReleaseDate>개봉일: {detailData.release_date}</ReleaseDate>
+    //     <Genre>
+    //       장르:
+    //       {detailData.genres.map((genre) => (
+    //         <span key={genre.id}> {genre.name} </span>
+    //       ))}
+    //     </Genre>
+    //     <Overview>줄거리 : {detailData.overview}</Overview>
+    //   </Text>
+    // </Container>
   );
 };
 

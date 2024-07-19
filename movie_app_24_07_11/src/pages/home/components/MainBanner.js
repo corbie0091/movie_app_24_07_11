@@ -55,12 +55,12 @@ const BlackBg = styled.div`
   opacity: 1;
 `;
 
-export const MainBanner = (data) => {
+export const MainBanner = ({ data }) => {
   return (
     <Container $bgUrl={data.backdrop_path}>
       <BlackBg />
       <h3>{data.title}</h3>
-      {/* <p>{data.overview.slice(0, 100) + "..."}</p> */}
+      <p>{data.overview.slice(0, 100) + "..."}</p>
     </Container>
   );
 };
