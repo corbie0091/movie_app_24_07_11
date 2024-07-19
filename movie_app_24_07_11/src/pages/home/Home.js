@@ -2,13 +2,8 @@
 import { useEffect, useState } from "react";
 import { nowPlaying, popular, topRated, upcoming } from "../../api";
 import { Loading } from "../../components/Loading";
-import styled from "styled-components";
-import { spacing } from "../../GlobalStyled";
-import { ORIGIN_URL, W500_URL } from "../../constant/imgUrl"; // 24.07.16
 import { Link } from "react-router-dom"; // 24.07.17
 import "swiper/css"; // 24.07.17
-import { Swiper, SwiperSlide } from "swiper/react"; // 24.07.17 swiper/react주의
-import { Scrollbar } from "swiper/modules";
 import { Movies } from "./components/Movies";
 import { MainBanner } from "./components/MainBanner";
 
