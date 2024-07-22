@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { ORIGIN_URL } from "../../constant/imgUrl";
 import { Loading } from "../../components/Loading";
 import { spacing } from "../../GlobalStyled";
+import { PageTitle } from "../home/components/PageTitle";
 
 const Container = styled.div`
   padding: 150px 20%;
@@ -120,6 +121,7 @@ export const Detail = () => {
         <Loading />
       ) : (
         <Container>
+          <PageTitle title={detailData.title} />
           <CoverImg
             src={ORIGIN_URL + detailData.poster_path}
             alt={detailData.title}

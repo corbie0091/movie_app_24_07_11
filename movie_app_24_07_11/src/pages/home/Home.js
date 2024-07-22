@@ -6,6 +6,7 @@ import { Link } from "react-router-dom"; // 24.07.17
 import "swiper/css"; // 24.07.17
 import { Movies } from "./components/Movies";
 import { MainBanner } from "./components/MainBanner";
+import { PageTitle } from "./components/PageTitle";
 
 export const Home = () => {
   const [nowData, setNowData] = useState();
@@ -47,6 +48,7 @@ export const Home = () => {
         <Loading />
       ) : (
         <>
+          <PageTitle title={"Home"} />
           <MainBanner data={nowData[0]} />
 
           <Movies title="현재 상영 영화" movieData={nowData} />

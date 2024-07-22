@@ -80,3 +80,8 @@ export const upcoming = () =>
 export const movieDetail = (movie_id) =>
   fetch(url(`movie/${movie_id}`), options).then((res) => res.json()); // fetch로 요청, 받아온 데이터를 json형식으로 반환해주세요라는 뜻
 // 이제 상세페이지를 원하면 movieDetail() 을 호출해주면 되는데 안에 id값을 넣어주면 됨
+
+export const searchMovie = (keyword) => {
+  const searchUrl = baseUrl + `search/movie?query=${keyword}&language=ko-kr`;
+  return fetch(searchUrl, options).then((res) => res.json());
+};
