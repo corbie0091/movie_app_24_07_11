@@ -9,8 +9,8 @@
 - [x] Header, Footer 등 공통적인 컴포넌트 구성
 - [x] Web Font 설정
 - [x] 각 페이지 UI 구성과 반응형 (진행중)
-- [] Helmet 설정
-- [ ] Header scroll Event
+- [x] Helmet 설정
+- [x] Header scroll Event
 - [ ] Deploy( 배포 )
 
 이 친구들을 쓰려면 설치해야할 앱들이 있을것임

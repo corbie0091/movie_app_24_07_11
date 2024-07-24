@@ -104,7 +104,6 @@ export const Detail = () => {
   useEffect(() => {
     (async () => {
       try {
-        console.log("Fetching details for movie ID:", movieId);
         const DetailResult = await movieDetail(movieId);
         setDetailData(DetailResult);
         setIsLoading(false);
@@ -112,7 +111,7 @@ export const Detail = () => {
         console.log(error);
       }
     })();
-  }, []);
+  }, [movieId]);
   console.log(detailData);
 
   return (

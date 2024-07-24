@@ -1,7 +1,7 @@
-import { set, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { BiSearch } from "react-icons/bi";
 import styled from "styled-components";
-import { colors, spacing } from "../../GlobalStyled";
+import { spacing } from "../../GlobalStyled";
 import { searchMovie } from "../../api";
 import { Link } from "react-router-dom";
 import { useState } from "react";
@@ -122,7 +122,7 @@ export const Search = () => {
       </Form>
 
       {searchData?.length === 0 ? (
-        "검색 결과가 없습니다"
+        searchError
       ) : (
         <>
           {searchData && (
