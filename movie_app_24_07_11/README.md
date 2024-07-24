@@ -8,8 +8,8 @@
 - [x] Loading 컴포넌트 구성
 - [x] Header, Footer 등 공통적인 컴포넌트 구성
 - [x] Web Font 설정
-- [x] Helmet 설정
-- [ ] 각 페이지 UI 구성과 반응형 (진행중)
+- [x] 각 페이지 UI 구성과 반응형 (진행중)
+- [] Helmet 설정
 - [ ] Header scroll Event
 - [ ] Deploy( 배포 )
 
@@ -22,9 +22,9 @@
 - [x] styled-reset
 - [x] swiper
 - [x] helmet-async
-- [ ] .font-awesome
-- [ ] react-hook-form
-- [ ] react-icons
+- [x] .font-awesome
+- [x] react-hook-form
+- [x] react-icons
 
 // 프론트 포폴1
 => 10일~15일 정도는 강사님과 프로젝트 진행

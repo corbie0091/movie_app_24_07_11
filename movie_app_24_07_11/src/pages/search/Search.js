@@ -133,13 +133,14 @@ export const Search = () => {
                 <>
                   {searchData.map((data) => (
                     <Con key={data.id}>
-                      <Link to={`/detail/${data.id}`} />
-                      <Bg>
-                        <img
-                          src={W500_URL + data.poster_path}
-                          alt={data.title}
-                        />
-                      </Bg>
+                      <Link to={`/detail/${data.id}`}>
+                        <Bg>
+                          <img
+                            src={W500_URL + data.poster_path}
+                            alt={data.title}
+                          />
+                        </Bg>
+                      </Link>
                     </Con>
                   ))}
                 </>
