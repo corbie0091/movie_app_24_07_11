@@ -11,7 +11,7 @@
 - [x] 각 페이지 UI 구성과 반응형 (진행중)
 - [x] Helmet 설정
 - [x] Header scroll Event
-- [ ] Deploy( 배포 )
+- [x] Deploy( 배포 )
 
 이 친구들을 쓰려면 설치해야할 앱들이 있을것임
 
