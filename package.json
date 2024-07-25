@@ -1,8 +1,4 @@
 {
-<<<<<<< HEAD
-  "dependencies": {
-    "react-router-dom": "^6.24.1"
-=======
   "name": "movie_app_24_07_11",
   "version": "0.1.0",
   "private": true,
@@ -51,6 +47,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
->>>>>>> 25ef9ec04208463f3fd1f0c764545924db569b4e
   }
 }
