@@ -3,7 +3,7 @@ const fetch = require("node-fetch");
 // fetch를 하는 이유 : 데이터들이 바뀌는 것을 자동으로 처리할 수 있도록 도와줌
 
 // 기본 url     *주의: /로 끝나게 설정했는지 안했는지 파악해서 /3// 이런식이 안되도록 해줘야함
-const baseUrl = "http://api.themoviedb.org/3/";
+const baseUrl = "https://api.themoviedb.org/3/";
 
 // 권한부여
 const options = {
