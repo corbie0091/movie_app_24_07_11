@@ -30,6 +30,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
+  "homepage": "https://jaewan0091.github.io/movie_app_24_07_11/",
   "eslintConfig": {
     "extends": [
       "react-app",
