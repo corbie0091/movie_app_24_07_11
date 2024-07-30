@@ -66,43 +66,33 @@ components 내부 ) Header.js Footer.js Section.js ... 이렇게 늘어가는 �
 2주남았을때 취업에 대한 꿀팁등을 풀 예정임
 
 
-Windows10 볼륨에 대한 폴더 경로의 목록입니다.
-볼륨 일련 번호는 5665-77A9입니다.
-C:\USERS\WODHK\PORTFOLIO\MOVIE_APP_24_07_11\SRC
-│  api.js
-│  GlobalStyled.js
-│  index.js
-│  Router.js
-│  routes.js
-│  
-├─components
-│      Footer.js
-│      Header.js
-│      Helmet.js
-│      Loading.js
-│      ScrollToTop.js
-│      
-├─constant
-│      imgUrl.js
-│      
-├─lib
-│      useScrollTop.js
-│      
-└─pages
-    │  PageNotFound.js
-    │  
-    ├─detail
-    │      Detail.js
-    │      
-    ├─home
-    │  │  Home.js
-    │  │  
-    │  └─components
-    │          MainBanner.js
-    │          Movies.js
-    │          PageTitle.js
-    │          
-    └─search
-            Search.js
+📦src
+ ┣ 📂components
+ ┃ ┣ 📜Footer.js
+ ┃ ┣ 📜Header.js
+ ┃ ┣ 📜Helmet.js
+ ┃ ┣ 📜Loading.js
+ ┃ ┗ 📜ScrollToTop.js
+ ┣ 📂constant
+ ┃ ┗ 📜imgUrl.js
+ ┣ 📂lib
+ ┃ ┗ 📜useScrollTop.js
+ ┣ 📂pages
+ ┃ ┣ 📂detail
+ ┃ ┃ ┗ 📜Detail.js
+ ┃ ┣ 📂home
+ ┃ ┃ ┣ 📂components
+ ┃ ┃ ┃ ┣ 📜MainBanner.js
+ ┃ ┃ ┃ ┣ 📜Movies.js
+ ┃ ┃ ┃ ┗ 📜PageTitle.js
+ ┃ ┃ ┗ 📜Home.js
+ ┃ ┣ 📂search
+ ┃ ┃ ┗ 📜Search.js
+ ┃ ┗ 📜PageNotFound.js
+ ┣ 📜api.js
+ ┣ 📜GlobalStyled.js
+ ┣ 📜index.js
+ ┣ 📜Router.js
+ ┗ 📜routes.js
             
 
