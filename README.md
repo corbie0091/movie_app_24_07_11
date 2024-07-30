@@ -96,5 +96,4 @@ components 내부 ) Header.js Footer.js Section.js ... 이렇게 늘어가는 �
  ┣ 📜index.js
  ┣ 📜Router.js
  ┗ 📜routes.js
-```
 
