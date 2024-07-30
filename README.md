@@ -66,38 +66,6 @@ components 내부 ) Header.js Footer.js Section.js ... 이렇게 늘어가는 �
 2주남았을때 취업에 대한 꿀팁등을 풀 예정임
 
 <h3>폴더트리</h3
-         
-``` 
-📦src
- ┣ 📂components
- ┃ ┣ 📜Footer.js
- ┃ ┣ 📜Header.js
- ┃ ┣ 📜Helmet.js
- ┃ ┣ 📜Loading.js
- ┃ ┗ 📜ScrollToTop.js
- ┣ 📂constant
- ┃ ┗ 📜imgUrl.js
- ┣ 📂lib
- ┃ ┗ 📜useScrollTop.js
- ┣ 📂pages
- ┃ ┣ 📂detail
- ┃ ┃ ┗ 📜Detail.js
- ┃ ┣ 📂home
- ┃ ┃ ┣ 📂components
- ┃ ┃ ┃ ┣ 📜MainBanner.js
- ┃ ┃ ┃ ┣ 📜Movies.js
- ┃ ┃ ┃ ┗ 📜PageTitle.js
- ┃ ┃ ┗ 📜Home.js
- ┃ ┣ 📂search
- ┃ ┃ ┗ 📜Search.js
- ┃ ┗ 📜PageNotFound.js
- ┣ 📜api.js
- ┣ 📜GlobalStyled.js
- ┣ 📜index.js
- ┣ 📜Router.js
- ┗ 📜routes.js
-
-```
 
 ```
 📦src
@@ -129,4 +97,35 @@ components 내부 ) Header.js Footer.js Section.js ... 이렇게 늘어가는 �
  ┣ 📜Router.js
  ┗ 📜routes.js
 ```
+
 ```
+📦src
+ ┣ 📂components
+ ┃ ┣ 📜Footer.js
+ ┃ ┣ 📜Header.js
+ ┃ ┣ 📜Helmet.js
+ ┃ ┣ 📜Loading.js
+ ┃ ┗ 📜ScrollToTop.js
+ ┣ 📂constant
+ ┃ ┗ 📜imgUrl.js
+ ┣ 📂lib
+ ┃ ┗ 📜useScrollTop.js
+ ┣ 📂pages
+ ┃ ┣ 📂detail
+ ┃ ┃ ┗ 📜Detail.js
+ ┃ ┣ 📂home
+ ┃ ┃ ┣ 📂components
+ ┃ ┃ ┃ ┣ 📜MainBanner.js
+ ┃ ┃ ┃ ┣ 📜Movies.js
+ ┃ ┃ ┃ ┗ 📜PageTitle.js
+ ┃ ┃ ┗ 📜Home.js
+ ┃ ┣ 📂search
+ ┃ ┃ ┗ 📜Search.js
+ ┃ ┗ 📜PageNotFound.js
+ ┣ 📜api.js
+ ┣ 📜GlobalStyled.js
+ ┣ 📜index.js
+ ┣ 📜Router.js
+ ┗ 📜routes.js
+```
+
