@@ -68,32 +68,32 @@ components 내부 ) Header.js Footer.js Section.js ... 이렇게 늘어가는 �
 <h3>폴더트리</h3
          
 ```
-📦src
- ┣ 📂components
- ┃ ┣ 📜Footer.js
- ┃ ┣ 📜Header.js
- ┃ ┣ 📜Helmet.js
- ┃ ┣ 📜Loading.js
- ┃ ┗ 📜ScrollToTop.js
- ┣ 📂constant
- ┃ ┗ 📜imgUrl.js
- ┣ 📂lib
- ┃ ┗ 📜useScrollTop.js
- ┣ 📂pages
- ┃ ┣ 📂detail
- ┃ ┃ ┗ 📜Detail.js
- ┃ ┣ 📂home
- ┃ ┃ ┣ 📂components
- ┃ ┃ ┃ ┣ 📜MainBanner.js
- ┃ ┃ ┃ ┣ 📜Movies.js
- ┃ ┃ ┃ ┗ 📜PageTitle.js
- ┃ ┃ ┗ 📜Home.js
- ┃ ┣ 📂search
- ┃ ┃ ┗ 📜Search.js
- ┃ ┗ 📜PageNotFound.js
- ┣ 📜api.js
- ┣ 📜GlobalStyled.js
- ┣ 📜index.js
- ┣ 📜Router.js
- ┗ 📜routes.js
+📦src  <br>
+ ┣ 📂components  <br>
+ ┃ ┣ 📜Footer.js  <br>
+ ┃ ┣ 📜Header.js  <br>
+ ┃ ┣ 📜Helmet.js  <br>
+ ┃ ┣ 📜Loading.js  <br>
+ ┃ ┗ 📜ScrollToTop.js  <br>
+ ┣ 📂constant  <br>
+ ┃ ┗ 📜imgUrl.js  <br>
+ ┣ 📂lib  <br>
+ ┃ ┗ 📜useScrollTop.js  <br>
+ ┣ 📂pages  <br>
+ ┃ ┣ 📂detail  <br>
+ ┃ ┃ ┗ 📜Detail.js  <br>
+ ┃ ┣ 📂home  <br>
+ ┃ ┃ ┣ 📂components  <br>
+ ┃ ┃ ┃ ┣ 📜MainBanner.js  <br>
+ ┃ ┃ ┃ ┣ 📜Movies.js  <br>
+ ┃ ┃ ┃ ┗ 📜PageTitle.js  <br>
+ ┃ ┃ ┗ 📜Home.js  <br>
+ ┃ ┣ 📂search  <br>
+ ┃ ┃ ┗ 📜Search.js  <br>
+ ┃ ┗ 📜PageNotFound.js  <br>
+ ┣ 📜api.js  <br>
+ ┣ 📜GlobalStyled.js  <br>
+ ┣ 📜index.js  <br>
+ ┣ 📜Router.js  <br>
+ ┗ 📜routes.js  <br>
 ````
