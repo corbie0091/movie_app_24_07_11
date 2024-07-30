@@ -67,7 +67,6 @@ components 내부 ) Header.js Footer.js Section.js ... 이렇게 늘어가는 �
 
 <h3>폴더트리</h3
          
-```
 📦src  <br>
  ┣ 📂components  <br>
  ┃ ┣ 📜Footer.js  <br>
@@ -96,4 +95,3 @@ components 내부 ) Header.js Footer.js Section.js ... 이렇게 늘어가는 �
  ┣ 📜index.js  <br>
  ┣ 📜Router.js  <br>
  ┗ 📜routes.js  <br>
-````
