@@ -97,4 +97,128 @@ components 내부 ) Header.js Footer.js Section.js ... 이렇게 늘어가는 �
  ┣ 📜Router.js
  ┗ 📜routes.js
  ```
-
+```
+📦PJ3T3_Postie
+ ┣ 📂App
+ ┃ ┗ 📜PJ3T3_PostieApp.swift
+ ┣ 📂Assets.xcassets
+ ┣ 📂Components
+ ┃ ┣ 📜Button.swift
+ ┃ ┣ 📜ClearBackground.swift
+ ┃ ┗ 📜LoadingView.swift
+ ┣ 📂Core
+ ┃ ┣ 📂Home
+ ┃ ┃ ┣ 📂View
+ ┃ ┃ ┃ ┣ 📜AddLetterView.swift
+ ┃ ┃ ┃ ┣ 📜EditLetterView.swift
+ ┃ ┃ ┃ ┣ 📜GroupedFavoriteListLetterView.swift
+ ┃ ┃ ┃ ┣ 📜GroupedLetterView.swift
+ ┃ ┃ ┃ ┣ 📜GroupedListLetterView.swift
+ ┃ ┃ ┃ ┣ 📜GroupedMyListLetterView.swift
+ ┃ ┃ ┃ ┣ 📜HomeView.swift
+ ┃ ┃ ┃ ┣ 📜LetterDetailView.swift
+ ┃ ┃ ┃ ┣ 📜LetterImageFullScreenView.swift
+ ┃ ┃ ┃ ┣ 📜ListLetterView.swift
+ ┃ ┃ ┃ ┣ 📜PageViewController.swift
+ ┃ ┃ ┃ ┣ 📜SearchView.swift
+ ┃ ┃ ┃ ┣ 📜SlowPostBoxView.swift
+ ┃ ┃ ┃ ┗ 📜UIImagePicker.swift
+ ┃ ┃ ┣ 📂ViewModel
+ ┃ ┃ ┃ ┣ 📜AddLetterViewModel.swift
+ ┃ ┃ ┃ ┣ 📜EditLetterViewModel.swift
+ ┃ ┃ ┃ ┣ 📜GroupedLetterViewModel.swift
+ ┃ ┃ ┃ ┣ 📜HomeViewModel.swift
+ ┃ ┃ ┃ ┣ 📜LetterDetailViewModel.swift
+ ┃ ┃ ┃ ┣ 📜SlowPostBoxViewModel.swift
+ ┃ ┃ ┃ ┣ 📜SummaryApi.swift
+ ┃ ┃ ┃ ┗ 📜TextRecognizer.swift
+ ┃ ┃ ┗ 📜SummaryApiKeys.plist
+ ┃ ┣ 📂Login
+ ┃ ┃ ┣ 📂View
+ ┃ ┃ ┃ ┣ 📜DeleteAccountButtonView.swift
+ ┃ ┃ ┃ ┣ 📜EmailLoginView.swift
+ ┃ ┃ ┃ ┣ 📜LoginInputView.swift
+ ┃ ┃ ┃ ┣ 📜LoginView.swift
+ ┃ ┃ ┃ ┣ 📜NicknameView.swift
+ ┃ ┃ ┃ ┣ 📜ReAuthButtonView.swift
+ ┃ ┃ ┃ ┗ 📜RegistrationView.swift
+ ┃ ┣ 📂Map
+ ┃ ┃ ┣ 📂View
+ ┃ ┃ ┃ ┣ 📜CoordinaterEtc.swift
+ ┃ ┃ ┃ ┣ 📜Coordinator.swift
+ ┃ ┃ ┃ ┣ 📜MapCoordinator.swift
+ ┃ ┃ ┃ ┗ 📜MapView.swift
+ ┃ ┃ ┣ 📂ViewModel
+ ┃ ┃ ┃ ┣ 📜LocationManager.swift
+ ┃ ┃ ┃ ┣ 📜MapApi.swift
+ ┃ ┃ ┃ ┣ 📜MapViewModel.swift
+ ┃ ┃ ┃ ┣ 📜MyCoord.swift
+ ┃ ┃ ┃ ┗ 📜NaverMap.swift
+ ┃ ┃ ┗ 📜MapApiKeys.plist
+ ┃ ┣ 📂Root
+ ┃ ┃ ┣ 📂View
+ ┃ ┃ ┃ ┗ 📜ContentView.swift
+ ┃ ┃ ┣ 📂ViewModel
+ ┃ ┃ ┃ ┗ 📜ContenViewModel.swift
+ ┃ ┃ ┗ 📜ContentView.swift
+ ┃ ┣ 📂Setting
+ ┃ ┃ ┣ 📂View
+ ┃ ┃ ┃ ┣ 📜AlertView.swift
+ ┃ ┃ ┃ ┣ 📜FirebaseTestRowView.swift
+ ┃ ┃ ┃ ┣ 📜FirebaseTestView.swift
+ ┃ ┃ ┃ ┣ 📜InformationView.swift
+ ┃ ┃ ┃ ┣ 📜InformationWebView.swift
+ ┃ ┃ ┃ ┣ 📜MembershipView.swift
+ ┃ ┃ ┃ ┣ 📜NoticeView.swift
+ ┃ ┃ ┃ ┣ 📜ProfileEditView.swift
+ ┃ ┃ ┃ ┣ 📜ProfileView.swift
+ ┃ ┃ ┃ ┣ 📜QuestionView.swift
+ ┃ ┃ ┃ ┣ 📜SplashScreenView.swift
+ ┃ ┃ ┃ ┗ 📜ThemeView.swift
+ ┃ ┃ ┗ 📂ViewModel
+ ┃ ┃ ┃ ┗ 📜SettingViewModel.swift
+ ┃ ┣ 📂Shop
+ ┃ ┃ ┣ 📂View
+ ┃ ┃ ┃ ┗ 📜ShopView.swift
+ ┃ ┃ ┗ 📂ViewModel
+ ┃ ┃ ┃ ┗ 📜ShopViewModel.swift
+ ┣ 📂Extenstions
+ ┃ ┣ 📜Color.swift
+ ┃ ┣ 📜Date.swift
+ ┃ ┣ 📜EnvironmentValues.swift
+ ┃ ┣ 📜Font.swift
+ ┃ ┣ 📜Logger.swift
+ ┃ ┣ 📜String.swift
+ ┃ ┗ 📜View.swift
+ ┣ 📂Font
+ ┃ ┣ 📜NanumMyeongjo.otf
+ ┃ ┣ 📜NanumMyeongjoBold.otf
+ ┃ ┣ 📜SairaStencilOne-Regular.ttf
+ ┃ ┣ 📜SourceSerifPro-Black.otf
+ ┃ ┗ 📜SourceSerifPro-Light.otf
+ ┣ 📂Manager
+ ┃ ┣ 📜AppStoreUpdateChecker.swift
+ ┃ ┣ 📜AppleSignInHelper.swift
+ ┃ ┣ 📜AuthCaseHelper.swift
+ ┃ ┣ 📜AuthManager.swift
+ ┃ ┣ 📜CryptoUtils.swift
+ ┃ ┣ 📜FirestoreManager.swift
+ ┃ ┣ 📜FirestoreNoticeManager.swift
+ ┃ ┣ 📜FirestoreShopManager.swift
+ ┃ ┣ 📜GoogleSignInHelper.swift
+ ┃ ┣ 📜NotificationManager.swift
+ ┃ ┗ 📜StorageManager.swift
+ ┣ 📂Model
+ ┃ ┣ 📜AppleUser.swift
+ ┃ ┣ 📜GoogleUser.swift
+ ┃ ┣ 📜Letter.swift
+ ┃ ┣ 📜LetterPhoto.swift
+ ┃ ┣ 📜OfficialLetter.swift
+ ┃ ┣ 📜PostieUser.swift
+ ┃ ┗ 📜Shop.swift
+ ┣ 📂Preview Content
+ ┃ ┗ 📂Preview Assets.xcassets
+ ┣ 📜.DS_Store
+ ┣ 📜GoogleService-Info.plist
+ ┗ 📜PJ3T3_Postie.entitlements
+```
