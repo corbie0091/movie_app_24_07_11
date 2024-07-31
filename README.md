@@ -64,3 +64,34 @@ components 내부 ) Header.js Footer.js Section.js ... 이렇게 늘어가는 �
 
 // 프론트 포폴2 (9월초쯤끝날예정)
 2주남았을때 취업에 대한 꿀팁등을 풀 예정임
+
+<h3>폴더트리</h3
+         
+📦src  <br>
+ ┣ 📂components  <br>
+ ┃ ┣ 📜Footer.js  <br>
+ ┃ ┣ 📜Header.js  <br>
+ ┃ ┣ 📜Helmet.js  <br>
+ ┃ ┣ 📜Loading.js  <br>
+ ┃ ┗ 📜ScrollToTop.js  <br>
+ ┣ 📂constant  <br>
+ ┃ ┗ 📜imgUrl.js  <br>
+ ┣ 📂lib  <br>
+ ┃ ┗ 📜useScrollTop.js  <br>
+ ┣ 📂pages  <br>
+ ┃ ┣ 📂detail  <br>
+ ┃ ┃ ┗ 📜Detail.js  <br>
+ ┃ ┣ 📂home  <br>
+ ┃ ┃ ┣ 📂components  <br>
+ ┃ ┃ ┃ ┣ 📜MainBanner.js  <br>
+ ┃ ┃ ┃ ┣ 📜Movies.js  <br>
+ ┃ ┃ ┃ ┗ 📜PageTitle.js  <br>
+ ┃ ┃ ┗ 📜Home.js  <br>
+ ┃ ┣ 📂search  <br>
+ ┃ ┃ ┗ 📜Search.js  <br>
+ ┃ ┗ 📜PageNotFound.js  <br>
+ ┣ 📜api.js  <br>
+ ┣ 📜GlobalStyled.js  <br>
+ ┣ 📜index.js  <br>
+ ┣ 📜Router.js  <br>
+ ┗ 📜routes.js  <br>
