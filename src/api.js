@@ -85,3 +85,28 @@ export const searchMovie = (keyword) => {
   const searchUrl = baseUrl + `search/movie?query=${keyword}&language=ko-kr`;
   return fetch(searchUrl, options).then((res) => res.json());
 };
+
+export const videos = async (movieId) => {
+  const apiKey = "9d8c505a912ec85d2931ff479b347e0c"; // 실제 API 키는 환경 변수로 관리해야 함
+  const videoUrl = `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${apiKey}&language=ko-KR`;
+
+  try {
+    const res = await fetch(videoUrl);
+
+    // 응답 상태 코드 확인
+    if (!res.ok) {
+      throw new Error(`HTTP error! Status: ${res.status}`);
+    }
+
+    const json = await res.json();
+    console.log("Video API Response:", json); // API 응답 확인
+
+    if (json.results && json.results.length > 0) {
+      return json.results[0].key; // 첫 번째 비디오의 키 반환
+    }
+    return null; // 비디오가 없는 경우
+  } catch (err) {
+    console.error("Error fetching trailer key:", err);
+    return null;
+  }
+};

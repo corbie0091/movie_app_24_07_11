@@ -1,25 +1,27 @@
 import React, { useEffect, useState } from "react";
-import { movieDetail } from "../../api";
+import { movieDetail, videos } from "../../api";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import { ORIGIN_URL } from "../../constant/imgUrl";
 import { Loading } from "../../components/Loading";
 import { spacing } from "../../GlobalStyled";
 import { PageTitle } from "../home/components/PageTitle";
+import ReactPlayer from "react-player";
 
 const Container = styled.div`
   padding: 150px 20%;
   display: flex;
+  flex-direction: row;
 
   @media screen and (max-width: 768px) {
     padding: 70px ${spacing.moSide} 0 ${spacing.moSide};
-    display: block;
+    flex-direction: column;
   }
 `;
 
 const CoverImg = styled.img`
   width: 45%;
-  object-fit: cover; // 강제로 이런식으로 contain이나 cover로 맞추고 안되면 반응형으로 만들어줘야 할듯
+  object-fit: cover;
   margin-right: 5%;
 
   @media screen and (max-width: 768px) {
@@ -29,7 +31,7 @@ const CoverImg = styled.img`
 `;
 
 const ConWrap = styled.div`
-  width: 40%; // 55% + 40% = 95%  나머지 5%는 여백값으로 자동조정 됨
+  width: 50%;
 
   h3 {
     font-size: 70px;
@@ -39,7 +41,6 @@ const ConWrap = styled.div`
 
   @media screen and (max-width: 768px) {
     width: 100%;
-
     h3 {
       font-size: 40px;
       margin-bottom: 15px;
@@ -54,12 +55,10 @@ const Info = styled.div`
     background-color: #555;
     border-radius: 20px;
     font-size: 18px;
-    font-family: 400;
     margin-right: 15px;
 
     @media screen and (max-width: 768px) {
       padding: 2px 4px;
-      display: block;
       margin-right: 10px;
       margin-bottom: 10px;
     }
@@ -69,7 +68,7 @@ const Info = styled.div`
 `;
 
 const Genres = styled.ul`
-  list-style: disc; //크기가 없음
+  list-style: disc;
   font-size: 18px;
   margin-top: 20px;
   margin-left: 20px;
@@ -96,81 +95,104 @@ const Desc = styled.div`
   }
 `;
 
-// movieDetail을 불러오기를 할 것임 안에 변수를 만들어 받아올 것임
+const VideoWrapper = styled.div`
+  margin-top: 50px;
+`;
+
+const VideoList = styled.div`
+  margin-top: 30px;
+
+  .video-item {
+    margin-bottom: 20px;
+  }
+`;
+
 export const Detail = () => {
+  const [videoData, setVideoData] = useState(null);
   const [detailData, setDetailData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const { id: movieId } = useParams();
+
   useEffect(() => {
-    (async () => {
+    const fetchData = async () => {
       try {
         const DetailResult = await movieDetail(movieId);
+        const MovieResult = await videos(movieId);
+        console.log("DetailResult:", DetailResult);
+        console.log("MovieResult:", MovieResult);
+        setVideoData(MovieResult);
         setDetailData(DetailResult);
-        setIsLoading(false);
       } catch (error) {
-        console.log(error);
+        console.error("데이터를 가져오는 데 실패했습니다:", error);
+      } finally {
+        setIsLoading(false);
       }
-    })();
+    };
+
+    fetchData();
   }, [movieId]);
-  console.log(detailData);
+
+  if (isLoading) {
+    return <Loading />;
+  }
+
+  const hasVideoData =
+    videoData && videoData.results && videoData.results.length > 0;
 
   return (
-    <div>
-      {isLoading ? (
-        <Loading />
-      ) : (
-        <Container>
-          <PageTitle title={detailData.title} />
-          <CoverImg
-            src={ORIGIN_URL + detailData.poster_path}
-            alt={detailData.title}
-          />
-          <ConWrap>
-            <h3>{detailData.title}</h3>
+    <Container>
+      <PageTitle title={detailData.title} />
+      <CoverImg
+        src={ORIGIN_URL + detailData.poster_path}
+        alt={detailData.title}
+      />
+      <ConWrap>
+        <h3>{detailData.title}</h3>
 
-            <Info>
-              <span>{detailData.release_date}</span>
-              <span>{Math.round(detailData.vote_average * 10) / 10}점</span>
-              <span>{detailData.runtime}분</span>
-            </Info>
+        <Info>
+          <span>{detailData.release_date}</span>
+          <span>{Math.round(detailData.vote_average * 10) / 10}점</span>
+          <span>{detailData.runtime}분</span>
+        </Info>
 
-            <Genres>
-              {detailData.genres.map((genre) => (
-                <li key={genre.id}>{genre.name}</li>
-              ))}
-            </Genres>
-            <Desc>{detailData.overview}</Desc>
-          </ConWrap>
-        </Container>
-      )}
-    </div>
-    // <Container>
-    //   <Bg>
-    //     <img
-    //       src={`${W500_URL}${detailData.poster_path}`}
-    //       alt={detailData.title}
-    //     />
-    //   </Bg>
-    //   <Text>
-    //     <Title>
-    //       <h1>{detailData.title}</h1>
-    //     </Title>
-    //     <Runtime>런타임: {detailData.runtime}분</Runtime>
-    //     <ReleaseDate>개봉일: {detailData.release_date}</ReleaseDate>
-    //     <Genre>
-    //       장르:
-    //       {detailData.genres.map((genre) => (
-    //         <span key={genre.id}> {genre.name} </span>
-    //       ))}
-    //     </Genre>
-    //     <Overview>줄거리 : {detailData.overview}</Overview>
-    //   </Text>
-    // </Container>
+        <Genres>
+          {detailData.genres.map((genre) => (
+            <li key={genre.id}>{genre.name}</li>
+          ))}
+        </Genres>
+        <Desc>{detailData.overview}</Desc>
+
+        {hasVideoData ? (
+          <VideoWrapper>
+            <PageTitle title="비디오" />
+            <VideoList>
+              {videoData.results.length > 0 ? (
+                videoData.results.map((video) => {
+                  if (!video.key) {
+                    return null;
+                  }
+
+                  console.log("Video Key:", video.key); // 개별 비디오의 key를 출력
+                  return (
+                    <div className="video-item" key={video.key}>
+                      <ReactPlayer
+                        url={`https://www.youtube.com/watch?v=${video.key}`}
+                        width="100%"
+                        height="auto"
+                        controls
+                      />
+                    </div>
+                  );
+                })
+              ) : (
+                <p>비디오가 없습니다.</p>
+              )}
+            </VideoList>
+          </VideoWrapper>
+        ) : (
+          <p>비디오 데이터가 없습니다.</p>
+        )}
+      </ConWrap>
+    </Container>
   );
 };
-
-// const data = movieDetail(424);
-// console.log(data);
-// }, {}); //useEffect는 콜백함수와 참고값들이 들어감
-// // promise를 방지하기위해서 async await를 붙여야하는데 async는 함수 앞에 써야하므로
-// // 함수로 감싸줘야함    (() => {}, {})이런식으로 감싸주면 됨

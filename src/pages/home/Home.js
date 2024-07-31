@@ -1,18 +1,27 @@
-// import를 알파벳순으로 정리할 필요성이 있다
 import { useEffect, useState } from "react";
-import { nowPlaying, popular, topRated, upcoming } from "../../api";
-import { Loading } from "../../components/Loading";
 import "swiper/css"; // 24.07.17
-import { Movies } from "./components/Movies";
+import { nowPlaying, popular, topRated, upcoming, videos } from "../../api";
+import { Loading } from "../../components/Loading";
 import { MainBanner } from "./components/MainBanner";
+import { Movies } from "./components/Movies";
 import { PageTitle } from "./components/PageTitle";
 
 export const Home = () => {
+  const [videoKey, setVideoKey] = useState(null);
   const [nowData, setNowData] = useState();
   const [popData, setPopData] = useState();
   const [ratedData, setRatedData] = useState();
   const [upcomingData, setUpcomingData] = useState();
   const [isLoading, setIsLoading] = useState(true); // 로딩은 기본적으로 true를 저장해놓고 있어야해서
+
+  const fetchVideoData = async (movieId) => {
+    try {
+      const videoKey = await videos(movieId);
+      setVideoKey(videoKey);
+    } catch (error) {
+      console.error(`Failed to fetch video for movie ${movieId}`, error);
+    }
+  };
 
   useEffect(() => {
     (async () => {
@@ -23,6 +32,11 @@ export const Home = () => {
         const { results: ratedResult } = await topRated();
         const { results: upcomeResult } = await upcoming();
         // console.log(upcom);
+
+        if (nowResult.length > 0) {
+          await fetchVideoData(nowResult[0].id);
+        }
+
         setNowData(nowResult);
         setPopData(popResult);
         setRatedData(ratedResult);
@@ -34,28 +48,24 @@ export const Home = () => {
       }
     })();
   }, []);
-
   console.log(nowData);
   // console.log(popData);
   // console.log(ratedData);
   // console.log(upcomingData);
   console.log(isLoading);
 
+  if (isLoading || !nowData.length) {
+    return <Loading />;
+  }
+
   return (
     <>
-      {isLoading ? (
-        <Loading />
-      ) : (
-        <>
-          <PageTitle title={"Home"} />
-          <MainBanner data={nowData[0]} />
-
-          <Movies title="현재 상영 영화" movieData={nowData} />
-          <Movies title="인기 영화" movieData={popData} />
-          <Movies title="평점 좋음" movieData={ratedData} />
-          <Movies title="개봉예정" movieData={upcomingData} />
-        </>
-      )}
+      <PageTitle title={"Home"} />
+      {nowData[0] && <MainBanner data={nowData[0]} videoKey={videoKey} />}
+      <Movies title="현재 상영 영화" movieData={nowData} />
+      <Movies title="인기 영화" movieData={popData} />
+      <Movies title="평점 좋음" movieData={ratedData} />
+      <Movies title="개봉예정" movieData={upcomingData} />
     </>
   );
 };
