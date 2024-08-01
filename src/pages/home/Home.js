@@ -16,8 +16,11 @@ export const Home = () => {
 
   const fetchVideoData = async (movieId) => {
     try {
-      const videoKey = await videos(movieId);
+      const videoData = await videos(movieId);
       setVideoKey(videoKey);
+      if (videoData.results && videoData.results.length > 0) {
+        setVideoKey(videoData.results[0].key);
+      }
     } catch (error) {
       console.error(`Failed to fetch video for movie ${movieId}`, error);
     }

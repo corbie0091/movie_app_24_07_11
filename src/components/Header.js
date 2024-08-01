@@ -1,7 +1,9 @@
+import React from "react";
 import { Link } from "react-router-dom";
 import { routes } from "../routes";
 import styled from "styled-components";
 import { colors, spacing } from "../GlobalStyled";
+import { FaSearch, FaUserCircle } from "react-icons/fa";
 
 const Container = styled.header`
   padding: 20px ${spacing.side};
@@ -13,6 +15,7 @@ const Container = styled.header`
   left: 0;
   width: 100%;
   z-index: 10;
+  background-color: ${colors.background}; // Adjust as needed
 
   @media screen and (max-width: 768px) {
     padding: 20px ${spacing.moSide};
@@ -29,20 +32,48 @@ const LOGO = styled.div`
 
 const Menu = styled.ul`
   display: flex;
+  align-items: center;
   font-size: 18px;
   font-weight: 600;
   li {
     margin-left: 150px;
-  }
+    display: flex;
+    align-items: center;
 
-  @media screen and (max-width: 768px) {
-    li {
+    @media screen and (max-width: 768px) {
       margin-left: 50px;
     }
   }
 `;
 
-export const Header = () => {
+const StyledLink = styled(Link)`
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+  transition: color 0.3s ease;
+
+  svg {
+    margin-right: 8px;
+    font-size: 24px;
+  }
+
+  &:hover {
+    color: ${colors.primaryDark};
+  }
+`;
+
+const UserButton = styled(StyledLink)`
+  background-color: ${colors.primary};
+  padding: 10px 20px;
+  border-radius: 20px;
+
+  &:hover {
+    background-color: ${colors.primaryDark};
+  }
+`;
+
+export const Header = ({ openLoginModal }) => {
   return (
     <Container>
       <LOGO>
@@ -51,10 +82,16 @@ export const Header = () => {
 
       <Menu>
         <li>
-          <Link to={routes.home}>HOME</Link>
+          <StyledLink to={routes.search}>
+            <FaSearch />
+            Search
+          </StyledLink>
         </li>
         <li>
-          <Link to={routes.search}>Search</Link>
+          <UserButton to={routes.login}>
+            <FaUserCircle />
+            LOGIN
+          </UserButton>
         </li>
       </Menu>
     </Container>

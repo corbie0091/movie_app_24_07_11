@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { movieDetail, videos } from "../../api";
+import { movieDetail, videos, getMovieCredits } from "../../api";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import { ORIGIN_URL } from "../../constant/imgUrl";
@@ -12,6 +12,8 @@ const Container = styled.div`
   padding: 150px 20%;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
 
   @media screen and (max-width: 768px) {
     padding: 70px ${spacing.moSide} 0 ${spacing.moSide};
@@ -65,6 +67,7 @@ const Info = styled.div`
   }
 
   display: flex;
+  flex-wrap: wrap;
 `;
 
 const Genres = styled.ul`
@@ -96,32 +99,82 @@ const Desc = styled.div`
 `;
 
 const VideoWrapper = styled.div`
-  margin-top: 50px;
+  padding: 20px 10%;
+  background-color: rgb(79, 79, 79);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 const VideoList = styled.div`
-  margin-top: 30px;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  gap: 20px;
+  padding: 10px;
 
   .video-item {
-    margin-bottom: 20px;
+    flex: 0 0 auto;
+    width: 370px; // 비디오의 너비 설정
+    height: 200px; // 비디오의 높이 설정
+    border-radius: 10px; // 비디오 모서리 둥글게
+    overflow: hidden; // 비디오가 둥근 모서리 밖으로 벗어나지 않도록
+    background-color: #000; // 비디오 배경 색상
+    position: relative; // 위치를 상대적으로 설정
+  }
+
+  @media screen and (max-width: 768px) {
+    .video-item {
+      width: 100%; // 작은 화면에서는 비디오가 전체 너비를 차지하도록 설정
+      height: 200px; // 작은 화면에서는 비디오의 높이 조정
+    }
+  }
+`;
+
+const CastList = styled.ul`
+  margin-top: 50px;
+  list-style: none;
+  padding: 0;
+
+  li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+
+    img {
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      margin-right: 10px;
+    }
+
+    span {
+      font-size: 18px;
+    }
   }
 `;
 
 export const Detail = () => {
   const [videoData, setVideoData] = useState(null);
   const [detailData, setDetailData] = useState(null);
+  const [castData, setCastData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const { id: movieId } = useParams();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const DetailResult = await movieDetail(movieId);
-        const MovieResult = await videos(movieId);
-        console.log("DetailResult:", DetailResult);
-        console.log("MovieResult:", MovieResult);
-        setVideoData(MovieResult);
-        setDetailData(DetailResult);
+        const detailResult = await movieDetail(movieId);
+        const movieResult = await videos(movieId);
+        const creditsResult = await getMovieCredits(movieId);
+
+        console.log("DetailResult:", detailResult);
+        console.log("MovieResult:", movieResult);
+        console.log("CreditsResult:", creditsResult);
+
+        setVideoData(movieResult);
+        setDetailData(detailResult);
+        setCastData(creditsResult.cast);
       } catch (error) {
         console.error("데이터를 가져오는 데 실패했습니다:", error);
       } finally {
@@ -140,59 +193,76 @@ export const Detail = () => {
     videoData && videoData.results && videoData.results.length > 0;
 
   return (
-    <Container>
-      <PageTitle title={detailData.title} />
-      <CoverImg
-        src={ORIGIN_URL + detailData.poster_path}
-        alt={detailData.title}
-      />
-      <ConWrap>
-        <h3>{detailData.title}</h3>
+    <>
+      <Container>
+        <PageTitle title={detailData.title} />
+        <CoverImg
+          src={ORIGIN_URL + detailData.poster_path}
+          alt={detailData.title}
+        />
+        <ConWrap>
+          <h3>{detailData.title}</h3>
 
-        <Info>
-          <span>{detailData.release_date}</span>
-          <span>{Math.round(detailData.vote_average * 10) / 10}점</span>
-          <span>{detailData.runtime}분</span>
-        </Info>
+          <Info>
+            <span>{detailData.release_date}</span>
+            <span>{Math.round(detailData.vote_average * 10) / 10}점</span>
+            <span>{detailData.runtime}분</span>
+          </Info>
 
-        <Genres>
-          {detailData.genres.map((genre) => (
-            <li key={genre.id}>{genre.name}</li>
-          ))}
-        </Genres>
-        <Desc>{detailData.overview}</Desc>
+          <Genres>
+            {detailData.genres.map((genre) => (
+              <li key={genre.id}>{genre.name}</li>
+            ))}
+          </Genres>
 
-        {hasVideoData ? (
-          <VideoWrapper>
-            <PageTitle title="비디오" />
-            <VideoList>
-              {videoData.results.length > 0 ? (
-                videoData.results.map((video) => {
-                  if (!video.key) {
-                    return null;
-                  }
+          {castData.length > 0 && (
+            <CastList>
+              <PageTitle title="출연진" />
+              {castData.slice(0, 5).map((cast) => (
+                <li key={cast.cast_id}>
+                  <img
+                    src={
+                      cast.profile_path
+                        ? ORIGIN_URL + cast.profile_path
+                        : "https://via.placeholder.com/50"
+                    }
+                    alt={cast.name}
+                  />
+                  <span>
+                    {cast.name} ({cast.character}역)
+                  </span>
+                </li>
+              ))}
+            </CastList>
+          )}
+          <Desc>{detailData.overview}</Desc>
+        </ConWrap>
+      </Container>
 
-                  console.log("Video Key:", video.key); // 개별 비디오의 key를 출력
-                  return (
-                    <div className="video-item" key={video.key}>
-                      <ReactPlayer
-                        url={`https://www.youtube.com/watch?v=${video.key}`}
-                        width="100%"
-                        height="auto"
-                        controls
-                      />
-                    </div>
-                  );
-                })
-              ) : (
-                <p>비디오가 없습니다.</p>
-              )}
-            </VideoList>
-          </VideoWrapper>
-        ) : (
-          <p>비디오 데이터가 없습니다.</p>
-        )}
-      </ConWrap>
-    </Container>
+      {hasVideoData && (
+        <VideoWrapper>
+          <PageTitle title="비디오" />
+          <VideoList>
+            {videoData.results.map((video) => {
+              if (!video.key) {
+                return null;
+              }
+
+              return (
+                <div className="video-item" key={video.key}>
+                  <ReactPlayer
+                    url={`https://www.youtube.com/watch?v=${video.key}`}
+                    width="100%"
+                    height="100%"
+                    style={{ borderRadius: "10px", objectFit: "cover" }}
+                    controls
+                  />
+                </div>
+              );
+            })}
+          </VideoList>
+        </VideoWrapper>
+      )}
+    </>
   );
 };

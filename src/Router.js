@@ -7,6 +7,8 @@ import { routes } from "./routes";
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 import { ScrollToTop } from "./components/ScrollToTop";
+import { Login } from "./pages/auth/Login";
+import { SignUp } from "./pages/auth/SignUp";
 
 const Router = () => {
   return (
@@ -17,6 +19,8 @@ const Router = () => {
         <Route path={routes.home} element={<Home />} />
         <Route path={routes.detail} element={<Detail />} />
         <Route path={routes.search} element={<Search />} />
+        <Route path={routes.login} element={<Login />} />
+        <Route path={routes.signup} element={<SignUp />} />
         <Route path="/*" element={<PageNotFound />} />
       </Routes>
       <Footer />

@@ -2,8 +2,40 @@ import styled, { keyframes } from "styled-components";
 import { ORIGIN_URL } from "../../../constant/imgUrl";
 import { spacing } from "../../../GlobalStyled";
 import { Link } from "react-router-dom";
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useState } from "react";
 import ReactPlayer from "react-player";
+import { FaVolumeUp } from "react-icons/fa";
+import { FaVolumeXmark } from "react-icons/fa6";
+
+// 애니메이션을 위한 keyframes 정의
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`;
+
+// 컴포넌트 선언 순서 조정
+const SoundButton = styled.button`
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background: rgba(0, 0, 0, 0);
+  color: white;
+  border: none;
+  padding: 0 ${spacing.side} 30px;
+  cursor: pointer;
+  z-index: 7;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 1s ease-in-out, visibility 1s ease-in-out;
+
+  svg {
+    font-size: 30px; // 아이콘 크기 조정
+  }
+`;
 
 const Container = styled.section`
   height: 80vh;
@@ -12,6 +44,7 @@ const Container = styled.section`
   padding: 420px ${spacing.side} 0 ${spacing.side};
   position: relative;
   z-index: 5;
+  overflow: hidden;
 
   h3 {
     padding-top: 380px;
@@ -26,8 +59,8 @@ const Container = styled.section`
   p {
     width: 500px;
     line-height: 30px;
-    font-size: 20px; // 기본 사이즈는 16px이지만 메인 본문이므로 20px로 해야할 듯
-    font-weight: 300; // 타이틀 강조를 위해 ""
+    font-size: 20px;
+    font-weight: 300;
     position: relative;
     z-index: 6;
   }
@@ -42,9 +75,15 @@ const Container = styled.section`
     p {
       max-width: 500px;
       width: 100%;
-      font-size: 14px; // 10px이하로는 절대 내리면 안됨 보통 12px정도 아니면 14px
+      font-size: 14px;
       line-height: 20px;
     }
+  }
+
+  &:hover ${SoundButton} {
+    opacity: 1;
+    visibility: visible;
+    animation: ${fadeIn} 1s ease-in;
   }
 `;
 
@@ -88,7 +127,7 @@ const Title = styled.h3`
   margin-bottom: 30px;
   position: relative;
   opacity: ${(props) => (props.$isHovered ? 0.4 : 1)};
-  transition: opacity 1s ease-in-out; // 부드러운 전환을 위한 설정
+  transition: opacity 1s ease-in-out;
   z-index: 6;
 `;
 
@@ -100,18 +139,6 @@ const Description = styled.p`
   opacity: 0.7;
   position: relative;
   z-index: 6;
-`;
-
-const SoundButton = styled.button`
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
-  background: rgba(0, 0, 0, 0.5);
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-  z-index: 7;
 `;
 
 export const MainBanner = ({ data, videoKey }) => {
@@ -131,7 +158,7 @@ export const MainBanner = ({ data, videoKey }) => {
     setIsPlaying(false);
     setTimeout(() => {
       setIsVisible(false);
-    }, 1000); // 비디오가 사라지는 시간과 맞추어 설정
+    }, 1000);
   }, []);
 
   const toggleMute = useCallback(() => {
@@ -164,7 +191,7 @@ export const MainBanner = ({ data, videoKey }) => {
         </Link>
       </ContentWrapper>
       <SoundButton onClick={toggleMute}>
-        {isMuted ? "Unmute" : "Mute"}
+        {isMuted ? <FaVolumeXmark /> : <FaVolumeUp />}
       </SoundButton>
     </Container>
   );

@@ -87,26 +87,29 @@ export const searchMovie = (keyword) => {
 };
 
 export const videos = async (movieId) => {
-  const apiKey = "9d8c505a912ec85d2931ff479b347e0c"; // 실제 API 키는 환경 변수로 관리해야 함
-  const videoUrl = `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${apiKey}&language=ko-KR`;
-
+  const apiKey = "9d8c505a912ec85d2931ff479b347e0c";
   try {
-    const res = await fetch(videoUrl);
+    const res = await fetch(
+      url(`movie/${movieId}/videos?api_key=${apiKey}&language=ko-KR`)
+    );
 
-    // 응답 상태 코드 확인
     if (!res.ok) {
       throw new Error(`HTTP error! Status: ${res.status}`);
     }
 
     const json = await res.json();
-    console.log("Video API Response:", json); // API 응답 확인
 
-    if (json.results && json.results.length > 0) {
-      return json.results[0].key; // 첫 번째 비디오의 키 반환
-    }
-    return null; // 비디오가 없는 경우
+    return json; // 전체 비디오 데이터를 반환
   } catch (err) {
-    console.error("Error fetching trailer key:", err);
-    return null;
+    console.error("Error fetching videos:", err);
+    return { results: [] }; // 빈 배열 반환
   }
 };
+
+export const getMovieCredits = (movie_id) =>
+  fetch(url(`movie/${movie_id}/credits`), options)
+    .then((res) => res.json())
+    .catch((error) => {
+      console.error("Error fetching credits:", error);
+      return { cast: [] };
+    });

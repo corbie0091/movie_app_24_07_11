@@ -3,6 +3,8 @@ import reset from "styled-reset";
 
 export const colors = {
   point: "crimson",
+  primary: "#007bff",
+  primaryDark: "#0056b3",
 };
 
 export const spacing = {
