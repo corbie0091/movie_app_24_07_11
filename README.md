@@ -67,6 +67,39 @@ components 내부 ) Header.js Footer.js Section.js ... 이렇게 늘어가는 �
 
 <h3>폴더트리</h3
          
-![image](https://github.com/user-attachments/assets/4710fa94-2ffe-4fc1-958b-9f239ffc3ce6)
+📦src
+ ┣ 📂components
+ ┃ ┣ 📜Button.js
+ ┃ ┣ 📜Footer.js
+ ┃ ┣ 📜Header.js
+ ┃ ┣ 📜Helmet.js
+ ┃ ┣ 📜Loading.js
+ ┃ ┣ 📜ScrollToTop.js
+ ┃ ┣ 📜ScrollToTopBtn.js
+ ┃ ┗ 📜VideoBox.js
+ ┣ 📂constant
+ ┃ ┗ 📜imgUrl.js
+ ┣ 📂lib
+ ┃ ┗ 📜useScrollTop.js
+ ┣ 📂pages
+ ┃ ┣ 📂auth
+ ┃ ┃ ┣ 📜Login.js
+ ┃ ┃ ┗ 📜SignUp.js
+ ┃ ┣ 📂detail
+ ┃ ┃ ┗ 📜Detail.js
+ ┃ ┣ 📂home
+ ┃ ┃ ┣ 📂components
+ ┃ ┃ ┃ ┣ 📜MainBanner.js
+ ┃ ┃ ┃ ┣ 📜Movies.js
+ ┃ ┃ ┃ ┗ 📜PageTitle.js
+ ┃ ┃ ┗ 📜Home.js
+ ┃ ┣ 📂search
+ ┃ ┃ ┗ 📜Search.js
+ ┃ ┗ 📜PageNotFound.js
+ ┣ 📜api.js
+ ┣ 📜GlobalStyled.js
+ ┣ 📜index.js
+ ┣ 📜Router.js
+ ┗ 📜routes.js
 
 
