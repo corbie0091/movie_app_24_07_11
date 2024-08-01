@@ -9,6 +9,7 @@ import { Footer } from "./components/Footer";
 import { ScrollToTop } from "./components/ScrollToTop";
 import { Login } from "./pages/auth/Login";
 import { SignUp } from "./pages/auth/SignUp";
+import { ScrollToTopBtn } from "./components/ScrollToTopBtn";
 
 const Router = () => {
   return (
@@ -24,6 +25,7 @@ const Router = () => {
         <Route path="/*" element={<PageNotFound />} />
       </Routes>
       <Footer />
+      <ScrollToTopBtn />
     </HashRouter>
   );
 };
