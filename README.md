@@ -66,7 +66,7 @@ components 내부 ) Header.js Footer.js Section.js ... 이렇게 늘어가는 �
 2주남았을때 취업에 대한 꿀팁등을 풀 예정임
 
 <h3>폴더트리</h3
-         
+``` 
 📦src
  ┣ 📂components
  ┃ ┣ 📜Button.js
@@ -101,5 +101,5 @@ components 내부 ) Header.js Footer.js Section.js ... 이렇게 늘어가는 �
  ┣ 📜index.js
  ┣ 📜Router.js
  ┗ 📜routes.js
-
+```
 
