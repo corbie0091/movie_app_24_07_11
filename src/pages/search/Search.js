@@ -62,7 +62,7 @@ const Conwrap = styled.div`
     grid-template-columns: repeat(2, 1fr); /* 768px 이하에서는 2개 항목 */
   }
 
-  @media screen and (max-width: 480px) {
+  @media screen and (max-width: 360px) {
     grid-template-columns: 1fr; /* 480px 이하에서는 1개 항목 */
   }
 `;

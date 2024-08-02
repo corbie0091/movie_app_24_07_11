@@ -34,8 +34,27 @@ const SoundButton = styled.button`
   svg {
     font-size: 30px;
   }
-`;
 
+  @media screen and (max-width: 768px) {
+    bottom: 15px;
+    right: 15px;
+    padding: 0 ${spacing.moside} 20px;
+
+    svg {
+      font-size: 25px;
+    }
+  }
+
+  @media screen and (max-width: 576px) {
+    bottom: 35px;
+    right: 10px;
+    padding: 0 ${spacing.moside} 15px;
+
+    svg {
+      font-size: 20px;
+    }
+  }
+`;
 const Container = styled.section`
   height: 80vh;
   background: url(${ORIGIN_URL}${(props) => props.$bgUrl}) no-repeat center /

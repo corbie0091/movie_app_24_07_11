@@ -6,7 +6,7 @@ import { colors, spacing } from "../GlobalStyled";
 import { FaSearch, FaUserCircle } from "react-icons/fa";
 
 const Container = styled.header`
-  padding: 20px ${spacing.side};
+  padding: 10px ${spacing.side};
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -19,30 +19,49 @@ const Container = styled.header`
     props.isScrolled ? "rgba(0, 0, 0, 0.7)" : "black"};
 
   @media screen and (max-width: 768px) {
-    padding: 20px ${spacing.moSide};
+    padding: 10px ${spacing.moSide};
+  }
+
+  @media screen and (max-width: 360px) {
+    padding: 8px ${spacing.moSide};
+    flex-direction: column;
+    align-items: flex-start;
   }
 `;
 
 const LOGO = styled.div`
-  font-size: 26px;
+  font-size: 20px;
   font-weight: 700;
   a {
     color: ${colors.point};
+  }
+
+  @media screen and (max-width: 360px) {
+    font-size: 18px;
   }
 `;
 
 const Menu = styled.ul`
   display: flex;
   align-items: center;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 600;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
   li {
-    margin-left: 150px;
+    margin-left: 20px;
     display: flex;
     align-items: center;
 
     @media screen and (max-width: 768px) {
-      margin-left: 50px;
+      margin-left: 15px;
+    }
+
+    @media screen and (max-width: 360px) {
+      margin-left: 10px;
+      font-size: 14px;
     }
   }
 `;
@@ -56,7 +75,11 @@ const StyledLink = styled(Link)`
 
   svg {
     margin-right: 8px;
-    font-size: 24px;
+    font-size: 20px;
+
+    @media screen and (max-width: 360px) {
+      font-size: 18px;
+    }
   }
 
   &:hover {
@@ -66,11 +89,17 @@ const StyledLink = styled(Link)`
 
 const UserButton = styled(StyledLink)`
   background-color: ${colors.primary};
-  padding: 10px 20px;
+  padding: 8px 16px;
   border-radius: 20px;
+  font-size: 14px;
 
   &:hover {
     background-color: ${colors.primaryDark};
+  }
+
+  @media screen and (max-width: 360px) {
+    padding: 6px 12px;
+    font-size: 12px;
   }
 `;
 

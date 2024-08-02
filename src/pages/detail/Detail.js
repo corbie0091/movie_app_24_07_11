@@ -14,10 +14,12 @@ const Container = styled.div`
   flex-direction: row;
   justify-content: space-between;
   flex-wrap: wrap;
+  gap: 20px; // Added gap for spacing between components
 
   @media screen and (max-width: 768px) {
     padding: 70px ${spacing.moSide} 0 ${spacing.moSide};
     flex-direction: column;
+    gap: 20px; // Maintain spacing in column layout
   }
 `;
 
@@ -34,6 +36,9 @@ const CoverImg = styled.img`
 
 const ConWrap = styled.div`
   width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px; // Added gap for spacing between elements
 
   h3 {
     font-size: 70px;
@@ -60,7 +65,6 @@ const Info = styled.div`
     margin-right: 15px;
 
     @media screen and (max-width: 768px) {
-      padding: 2px 4px;
       margin-right: 10px;
       margin-bottom: 10px;
     }
@@ -86,6 +90,34 @@ const Genres = styled.ul`
   }
 `;
 
+const CastList = styled.ul`
+  margin-top: 50px;
+  list-style: none;
+  padding: 0;
+
+  li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    gap: 10px;
+
+    flex: 1;
+
+    img {
+      object-fit: cover;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      min-width: 50px;
+      min-height: 50px;
+    }
+
+    span {
+      font-size: 18px;
+    }
+  }
+`;
+
 const Desc = styled.div`
   font-size: 18px;
   font-weight: 400;
@@ -94,7 +126,8 @@ const Desc = styled.div`
   line-height: 30px;
 
   @media screen and (max-width: 768px) {
-    margin-top: 50px;
+    margin-top: 30px;
+    margin-bottom: 30px;
   }
 `;
 
@@ -104,6 +137,10 @@ const VideoWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @media screen and (max-width: 768px) {
+    padding: 20px ${spacing.moSide}; // Adjust padding for small screens
+  }
 `;
 
 const VideoList = styled.div`
@@ -127,29 +164,6 @@ const VideoList = styled.div`
     .video-item {
       width: 100%; // 작은 화면에서는 비디오가 전체 너비를 차지하도록 설정
       height: 200px; // 작은 화면에서는 비디오의 높이 조정
-    }
-  }
-`;
-
-const CastList = styled.ul`
-  margin-top: 50px;
-  list-style: none;
-  padding: 0;
-
-  li {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-
-    img {
-      border-radius: 50%;
-      width: 50px;
-      height: 50px;
-      margin-right: 10px;
-    }
-
-    span {
-      font-size: 18px;
     }
   }
 `;

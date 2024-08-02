@@ -53,59 +53,10 @@ const LoginBox = styled.div`
   }
 `;
 
-const InputContainer = styled.div`
-  width: 100%;
-  margin: 10px 0;
-  position: relative;
-`;
-
-const Label = styled.label`
-  position: absolute;
-  top: -10px;
-  left: 0px;
-  background-color: white;
-  width: 100%;
-  font-size: 16px;
-  border: 1px solid #ddd;
-  color: gray;
-  padding: 5px 5px;
-  pointer-events: none;
-  border-radius: 6px 6px 0 0;
-  h3 {
-    padding-left: 5px;
-  }
-
-  @media screen and (max-width: 480px) {
-    font-size: 14px;
-  }
-`;
-
-const Input = styled.input`
-  width: 100%;
-  padding: 15px 10px;
-  margin: 10px 0;
-  font-size: 16px;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  box-sizing: border-box;
-  outline: none;
-  box-shadow: 0 0px px rgba(0, 0, 0, 0.5);
-
-  &:focus {
-    border-color: #ddd;
-    box-shadow: none;
-  }
-
-  @media screen and (max-width: 480px) {
-    padding: 12px 8px;
-    font-size: 14px;
-  }
-`;
-
 const Title = styled.h2`
   font-size: 50px;
-  font-weight: 500;
-  color: #333;
+  font-weight: 800;
+  color: #111;
   margin-top: 40px;
   text-align: center; /* Center text for better alignment */
 
@@ -127,6 +78,56 @@ const Title = styled.h2`
   @media screen and (max-width: 480px) {
     font-size: 28px;
     margin-top: 20px;
+  }
+`;
+
+const InputContainer = styled.div`
+  width: 100%;
+  margin: 10px 0;
+  position: relative;
+`;
+
+const Label = styled.label`
+  position: absolute;
+  top: -10px;
+  left: 0px;
+  background-color: white;
+  width: 100%;
+  font-size: 16px;
+  font-weight: 600;
+  border: 1px solid #111;
+  color: black;
+  padding: 5px 5px;
+  pointer-events: none;
+  border-radius: 6px 6px 0 0;
+  h3 {
+    padding-left: 5px;
+  }
+
+  @media screen and (max-width: 480px) {
+    font-size: 14px;
+  }
+`;
+
+const Input = styled.input`
+  width: 100%;
+  padding: 15px 10px;
+  margin: 10px 0;
+  font-size: 16px;
+  border: 1px solid #111;
+  border-radius: 6px;
+  box-sizing: border-box;
+  outline: none;
+  box-shadow: 0 0px px rgba(0, 0, 0, 0.5);
+
+  &:focus {
+    border-color: #ddd;
+    box-shadow: none;
+  }
+
+  @media screen and (max-width: 480px) {
+    padding: 12px 8px;
+    font-size: 14px;
   }
 `;
 
