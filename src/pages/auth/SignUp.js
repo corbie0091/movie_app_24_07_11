@@ -12,15 +12,11 @@ const Container = styled.div`
   background-color: #111;
   color: #eee;
   padding: 20px;
-
-  div {
-    width: 100%;
-  }
 `;
 
 const Form = styled.form`
   width: 25vw;
-  height: 50vh;
+  height: auto;
   padding: 82px;
   background-color: #eee;
   border-radius: 16px;
@@ -42,6 +38,26 @@ const Form = styled.form`
       margin-bottom: -20px;
     }
   }
+
+  @media screen and (max-width: 1440px) {
+    width: 35vw;
+    padding: 60px;
+  }
+
+  @media screen and (max-width: 1024px) {
+    width: 50vw;
+    padding: 50px;
+  }
+
+  @media screen and (max-width: 768px) {
+    width: 80vw;
+    padding: 40px;
+  }
+
+  @media screen and (max-width: 480px) {
+    width: 90vw;
+    padding: 20px;
+  }
 `;
 
 const Title = styled.h2`
@@ -51,6 +67,26 @@ const Title = styled.h2`
   color: #333;
   margin-top: 45px;
   margin-bottom: 20px;
+
+  @media screen and (max-width: 1440px) {
+    font-size: 28px;
+    margin-top: 35px;
+  }
+
+  @media screen and (max-width: 1024px) {
+    font-size: 26px;
+    margin-top: 30px;
+  }
+
+  @media screen and (max-width: 768px) {
+    font-size: 24px;
+    margin-top: 25px;
+  }
+
+  @media screen and (max-width: 480px) {
+    font-size: 22px;
+    margin-top: 20px;
+  }
 `;
 
 const Input = styled.input`
@@ -68,12 +104,21 @@ const Input = styled.input`
     border-color: #ddd;
     box-shadow: none;
   }
+
+  @media screen and (max-width: 480px) {
+    padding: 12px 8px;
+    font-size: 14px;
+  }
 `;
 
 const GenderButtonContainer = styled.div`
   display: flex;
   width: 100%;
   margin-bottom: 50px;
+
+  @media screen and (max-width: 480px) {
+    margin-bottom: 30px;
+  }
 `;
 
 const GenderButton = styled.button`
@@ -92,6 +137,11 @@ const GenderButton = styled.button`
 
   &:hover {
     background-color: lightgray;
+  }
+
+  @media screen and (max-width: 480px) {
+    padding: 10px;
+    font-size: 14px;
   }
 `;
 

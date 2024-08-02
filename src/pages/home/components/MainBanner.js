@@ -17,7 +17,6 @@ const fadeIn = keyframes`
   }
 `;
 
-// 컴포넌트 선언 순서 조정
 const SoundButton = styled.button`
   position: absolute;
   bottom: 20px;
@@ -30,10 +29,10 @@ const SoundButton = styled.button`
   z-index: 7;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 1s ease-in-out, visibility 1s ease-in-out;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
 
   svg {
-    font-size: 30px; // 아이콘 크기 조정
+    font-size: 30px;
   }
 `;
 
@@ -41,44 +40,10 @@ const Container = styled.section`
   height: 80vh;
   background: url(${ORIGIN_URL}${(props) => props.$bgUrl}) no-repeat center /
     cover;
-  padding: 420px ${spacing.side} 0 ${spacing.side};
+  padding: 0 ${spacing.side};
   position: relative;
   z-index: 5;
   overflow: hidden;
-
-  h3 {
-    padding-top: 380px;
-    font-size: 80px;
-    font-weight: 700;
-    letter-spacing: -3px;
-    margin-bottom: 30px;
-    position: relative;
-    z-index: 6;
-  }
-
-  p {
-    width: 500px;
-    line-height: 30px;
-    font-size: 20px;
-    font-weight: 300;
-    position: relative;
-    z-index: 6;
-  }
-
-  @media screen and (max-width: 768px) {
-    padding: 550px ${spacing.moSide} 0 ${spacing.moSide};
-
-    h3 {
-      font-size: 40px;
-      margin-bottom: 15px;
-    }
-    p {
-      max-width: 500px;
-      width: 100%;
-      font-size: 14px;
-      line-height: 20px;
-    }
-  }
 
   &:hover ${SoundButton} {
     opacity: 1;
@@ -115,30 +80,77 @@ const VideoWrapper = styled.div`
 `;
 
 const ContentWrapper = styled.div`
-  position: relative;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
   z-index: 6;
-  padding: 0 20px;
+  max-width: 500px;
+  width: 100%;
+  padding: 20px;
+
+  @media screen and (max-width: 768px) {
+    bottom: 10px;
+    left: 10px;
+    padding: 10px;
+  }
+
+  @media screen and (max-width: 576px) {
+    bottom: 5px;
+    left: 5px;
+    padding: 5px;
+  }
 `;
 
 const Title = styled.h3`
-  font-size: 80px;
+  font-size: 70px;
   font-weight: 700;
   letter-spacing: -3px;
-  margin-bottom: 30px;
-  position: relative;
+  margin-bottom: 20px;
   opacity: ${(props) => (props.$isHovered ? 0.4 : 1)};
-  transition: opacity 1s ease-in-out;
-  z-index: 6;
+  transition: opacity 0.3s ease-in-out;
+  max-width: 100%;
+  word-break: break-word;
+  overflow-wrap: break-word;
+
+  @media screen and (max-width: 1200px) {
+    font-size: 60px;
+  }
+
+  @media screen and (max-width: 992px) {
+    font-size: 50px;
+  }
+
+  @media screen and (max-width: 768px) {
+    font-size: 40px;
+    max-width: 90%;
+  }
+
+  @media screen and (max-width: 576px) {
+    font-size: 40px;
+    max-width: 100%;
+  }
 `;
 
 const Description = styled.p`
-  width: 500px;
-  line-height: 30px;
   font-size: 20px;
   font-weight: 300;
   opacity: 0.7;
-  position: relative;
-  z-index: 6;
+
+  @media screen and (max-width: 1200px) {
+    font-size: 18px;
+  }
+
+  @media screen and (max-width: 992px) {
+    font-size: 16px;
+  }
+
+  @media screen and (max-width: 768px) {
+    font-size: 14px;
+  }
+
+  @media screen and (max-width: 576px) {
+    font-size: 0px;
+  }
 `;
 
 export const MainBanner = ({ data, videoKey }) => {

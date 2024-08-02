@@ -1,13 +1,13 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
-import { HelmetProvider } from 'react-helmet-async';
+// import React from 'react';
+// import ReactDOM from 'react-dom';
+// import App from './App';
+// import { HelmetProvider } from 'react-helmet-async';
 
-const helmetContext = {};
+// const helmetContext = {};
 
-ReactDOM.render(
-  <HelmetProvider context={helmetContext}>
-    <App />
-  </HelmetProvider>,
-  document.getElementById('root')
-);
+// ReactDOM.render(
+//   <HelmetProvider context={helmetContext}>
+//     <App />
+//   </HelmetProvider>,
+//   document.getElementById('root')
+// );

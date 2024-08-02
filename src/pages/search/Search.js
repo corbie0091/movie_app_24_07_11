@@ -10,6 +10,10 @@ import { W500_URL } from "../../constant/imgUrl";
 
 const Container = styled.div`
   padding: 150px ${spacing.side};
+
+  @media screen and (max-width: 768px) {
+    padding: 150px 40px 150px ${spacing.moSide};
+  }
 `;
 
 const Form = styled.form`
@@ -19,6 +23,7 @@ const Form = styled.form`
     width: 100%;
     height: 50px;
     border-bottom: 1px solid #555;
+    margin-bottom: 20px;
     &::placeholder {
       font-size: 0px;
     }
@@ -35,7 +40,7 @@ const Form = styled.form`
     font-size: 20px;
     cursor: pointer;
   }
-`; // div가 아닌 form임을 인지!
+`;
 
 const ErrorMessage = styled.h4`
   font-size: 18px;
@@ -45,18 +50,45 @@ const ErrorMessage = styled.h4`
 
 const Conwrap = styled.div`
   display: grid;
-  grid-template-columns: repeat(
-    5,
-    1fr
-  ); // repeat(가로로 몇개, 그리드 당 크기);  1fr : 하나씩 동등하게 나눠 갖자라는 뜻 //몬드리안디자인도 가능하니 생각해야함
-  row-gap: 30px; // 그리드 만의 간격  row-gap: 위아래 간격
-  column-gap: 15px; // column-gap: 위아래 간격
+  grid-template-columns: repeat(8, 1fr); /* 최대 8개 항목 */
+  row-gap: 30px;
+  column-gap: 15px;
+
+  @media screen and (max-width: 1200px) {
+    grid-template-columns: repeat(5, 1fr); /* 1200px 이하에서는 5개 항목 */
+  }
+
+  @media screen and (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr); /* 768px 이하에서는 2개 항목 */
+  }
+
+  @media screen and (max-width: 480px) {
+    grid-template-columns: 1fr; /* 480px 이하에서는 1개 항목 */
+  }
 `;
 
-const Con = styled.div``;
+const Con = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  .title {
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #fff;
+  }
+
+  img {
+    border-radius: 8px;
+    object-fit: cover;
+  }
+`;
 
 const Bg = styled.div`
   height: 300px;
+  width: 100%;
   img {
     width: 100%;
     height: 100%;
@@ -140,6 +172,7 @@ export const Search = () => {
                             alt={data.title}
                           />
                         </Bg>
+                        <div className="title">{data.title}</div>
                       </Link>
                     </Con>
                   ))}

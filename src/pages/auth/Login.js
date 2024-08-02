@@ -13,7 +13,7 @@ const Container = styled.div`
 
 const LoginBox = styled.div`
   width: 25vw;
-  height: 35vh;
+  height: auto; /* Height auto for content adaptation */
   padding: 82px;
   background-color: #eee;
   border-radius: 16px;
@@ -22,12 +22,34 @@ const LoginBox = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  box-sizing: border-box;
 
   p {
     padding: 30px 0;
     font-size: 13px;
     color: gray;
     letter-spacing: 1;
+    text-align: center; /* Center text for better alignment */
+  }
+
+  @media screen and (max-width: 1440px) {
+    width: 35vw;
+    padding: 60px;
+  }
+
+  @media screen and (max-width: 1024px) {
+    width: 50vw;
+    padding: 50px;
+  }
+
+  @media screen and (max-width: 768px) {
+    width: 80vw;
+    padding: 40px;
+  }
+
+  @media screen and (max-width: 480px) {
+    width: 90vw;
+    padding: 20px;
   }
 `;
 
@@ -52,6 +74,10 @@ const Label = styled.label`
   h3 {
     padding-left: 5px;
   }
+
+  @media screen and (max-width: 480px) {
+    font-size: 14px;
+  }
 `;
 
 const Input = styled.input`
@@ -69,6 +95,11 @@ const Input = styled.input`
     border-color: #ddd;
     box-shadow: none;
   }
+
+  @media screen and (max-width: 480px) {
+    padding: 12px 8px;
+    font-size: 14px;
+  }
 `;
 
 const Title = styled.h2`
@@ -76,6 +107,27 @@ const Title = styled.h2`
   font-weight: 500;
   color: #333;
   margin-top: 40px;
+  text-align: center; /* Center text for better alignment */
+
+  @media screen and (max-width: 1440px) {
+    font-size: 42px;
+    margin-top: 35px;
+  }
+
+  @media screen and (max-width: 1024px) {
+    font-size: 36px;
+    margin-top: 30px;
+  }
+
+  @media screen and (max-width: 768px) {
+    font-size: 32px;
+    margin-top: 25px;
+  }
+
+  @media screen and (max-width: 480px) {
+    font-size: 28px;
+    margin-top: 20px;
+  }
 `;
 
 export const Login = () => {
@@ -92,7 +144,7 @@ export const Login = () => {
       <LoginBox>
         <Title>로그인 또는 가입</Title>
         <p>
-          계속하려면 이메일을 입력하세요 없는 경우 새로 만들라는 메시지가
+          계속하려면 이메일을 입력하세요. 없는 경우 새로 만들라는 메시지가
           표시됩니다.
         </p>
         <form onSubmit={handleSubmit}>

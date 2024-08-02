@@ -1,3 +1,4 @@
+import { TbBackground } from "react-icons/tb";
 import { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
 
@@ -5,6 +6,7 @@ export const colors = {
   point: "crimson",
   primary: "#007bff",
   primaryDark: "#0056b3",
+  TbBackground: "#111",
 };
 
 export const spacing = {

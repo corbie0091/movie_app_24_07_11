@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { routes } from "../routes";
 import styled from "styled-components";
@@ -15,7 +15,8 @@ const Container = styled.header`
   left: 0;
   width: 100%;
   z-index: 10;
-  background-color: ${colors.background}; // Adjust as needed
+  background-color: ${(props) =>
+    props.isScrolled ? "rgba(0, 0, 0, 0.7)" : "black"};
 
   @media screen and (max-width: 768px) {
     padding: 20px ${spacing.moSide};
@@ -74,8 +75,26 @@ const UserButton = styled(StyledLink)`
 `;
 
 export const Header = ({ openLoginModal }) => {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const offset = window.scrollY;
+      if (offset > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <Container>
+    <Container isScrolled={isScrolled}>
       <LOGO>
         <Link to={routes.home}>MOVIE</Link>
       </LOGO>
