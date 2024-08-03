@@ -85,6 +85,10 @@ const InputContainer = styled.div`
   width: 100%;
   margin: 10px 0;
   position: relative;
+  &:focus {
+    border-color: crimson;
+    box-shadow: none;
+  }
 `;
 
 const Label = styled.label`
@@ -100,6 +104,7 @@ const Label = styled.label`
   padding: 5px 5px;
   pointer-events: none;
   border-radius: 6px 6px 0 0;
+
   h3 {
     padding-left: 5px;
   }
@@ -121,13 +126,13 @@ const Input = styled.input`
   box-shadow: 0 0px px rgba(0, 0, 0, 0.5);
 
   &:focus {
-    border-color: #ddd;
+    border-color: black;
     box-shadow: none;
   }
 
   @media screen and (max-width: 480px) {
     padding: 12px 8px;
-    font-size: 14px;
+    font-size: 16px;
   }
 `;
 
