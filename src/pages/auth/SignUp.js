@@ -107,7 +107,7 @@ const Input = styled.input`
 
   @media screen and (max-width: 480px) {
     padding: 12px 8px;
-    font-size: 14px;
+    font-size: 16px;
   }
 `;
 
@@ -141,7 +141,7 @@ const GenderButton = styled.button`
 
   @media screen and (max-width: 480px) {
     padding: 10px;
-    font-size: 14px;
+    font-size: 16px;
   }
 `;
 
